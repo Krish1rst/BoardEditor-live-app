@@ -1,0 +1,11 @@
+{
+  "name": "mern-realtime-whiteboard-sharing-app-backend",
+  "version": "1.0.0",
+  "description": "this is backend for mern real time whiteboard sharing app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Krishna yadav",
+  "license": "MIT"
+}
