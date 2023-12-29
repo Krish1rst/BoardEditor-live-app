@@ -1,11 +1,15 @@
 import React from 'react'
 import "./index.css";
-import { useState } from 'react';
+import { useState ,useRef } from 'react';
 import WhiteBoard from '../../components/Whiteboard';
 
 function RoomPage() {
+const canvasRef=useRef(null);
+const ctxRef = useRef(null);
+
     const [tool,setTool]=useState('pencil');
     const [color,setColor]=useState('black');
+    const [elements,setElements]=useState([]);
   return (
     <div className="row">
         <h1 className="text-center py-4">White Board Sharing app<span className='text-primary'>[Users Online : 0]</span></h1>
@@ -42,7 +46,7 @@ function RoomPage() {
             </div>
         </div>
         <div className="col-md-10 mx-auto mt-1 canvas-box">
-            <WhiteBoard/>
+            <WhiteBoard canvasRef={canvasRef} ctxRef={ctxRef} elements={elements} setElements={setElements}/>
         </div>
     </div>
   )
