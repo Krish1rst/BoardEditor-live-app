@@ -1,11 +1,17 @@
-import Forms from './components/Forms';
 import './App.css';
+import {Route, Routes} from "react-router-dom"
+import Forms from './components/Forms';
+import RoomPage from './pages/RoomPage';
+
 
 function App() {
   return (
-    <>
-    <Forms/>
-    </>
+    <div className='container'>
+      <Routes>
+        <Route path='/' element={<Forms/>}/>
+        <Route path='/:roomId'element={<RoomPage/>}/>
+      </Routes>
+    </div>
   );
 }
 
