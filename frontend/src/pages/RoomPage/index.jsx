@@ -1,27 +1,28 @@
 import React from 'react'
 import "./index.css";
 import { useState } from 'react';
+import WhiteBoard from '../../components/Whiteboard';
 
 function RoomPage() {
     const [tool,setTool]=useState('pencil');
     const [color,setColor]=useState('black');
   return (
     <div className="row">
-        <h1 className="text-center py-5">White Board Sharing app</h1>
+        <h1 className="text-center py-4">White Board Sharing app<span className='text-primary'>[Users Online : 0]</span></h1>
         <div className="col-md-10 mx-auto 
          px-5  mb-5 d-flex align-items-center jusitify-content-center">
             <div className="d-flex col-md-2 justify-content-center gap-1">
                 <div className="d-flex gap-1 align-items-center">
                     <label htmlFor="pencil">pencil</label>
-                    <input type="radio" name='tool' id='pencil' value='pencil'className='mt-1' onChange={(e)=>setTool(e.target.value)} />
+                    <input type="radio" name='tool' id='pencil' checked={tool==='pencil'} value='pencil'className='mt-1' onChange={(e)=>setTool(e.target.value)} />
                 </div>
                 <div className="d-flex gap-1 align-items-center">
                     <label htmlFor="line">line</label>
-                    <input type="radio" name='tool' id='line' value='line'className='mt-1' onChange={(e)=>setTool(e.target.value)} />
+                    <input type="radio" name='tool' id='line'checked={tool==='line'}  value='line'className='mt-1' onChange={(e)=>setTool(e.target.value)} />
                 </div>
                 <div className="d-flex gap-1 align-items-center">
                     <label htmlFor="rectangle">rectangle</label>
-                    <input type="radio" name='tool' id='rectangle' value='rectangle'className='mt-1' onChange={(e)=>setTool(e.target.value)} />
+                    <input type="radio" name='tool' id='rectangle' checked={tool==='rectangle'} value='rectangle'className='mt-1' onChange={(e)=>setTool(e.target.value)} />
                 </div>
             </div>
             <div className="col-md-3 mx-auto">
@@ -39,6 +40,9 @@ function RoomPage() {
                     Clear Canvas
                 </button>
             </div>
+        </div>
+        <div className="col-md-10 mx-auto mt-1 canvas-box">
+            <WhiteBoard/>
         </div>
     </div>
   )
