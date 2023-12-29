@@ -1,12 +1,10 @@
-import logo from './logo.svg';
+import Forms from './components/Forms';
 import './App.css';
 
 function App() {
   return (
     <>
-    <h1>
-      Configuring.....
-    </h1>
+    <Forms/>
     </>
   );
 }
