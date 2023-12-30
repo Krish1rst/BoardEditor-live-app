@@ -10,12 +10,34 @@ const ctxRef = useRef(null);
     const [tool,setTool]=useState('pencil');
     const [color,setColor]=useState('black');
     const [elements,setElements]=useState([]);
+    const[history, setHistory]=useState([]);
+
     const handleClearCanvas=()=>{
         const canvas =canvasRef.current;
         const ctx = canvas.getContext('2d');
-        ctx.fillReact='white';
+        ctx.fillRect='white';
         ctx.clearRect(0,0,canvasRef.current.width, canvasRef.current.height);
         setElements([]);
+    }
+
+    const undo = () => {
+        if (elements.length > 0) {
+          setHistory((prevHistory) => [
+            ...prevHistory,
+            elements[elements.length - 1],
+          ]);
+          setElements((prevElements) =>
+            prevElements.slice(0, prevElements.length - 1)
+          );
+        }
+      };
+    const redo = ()=>{
+        if (history.length > 0) {
+    setElements((prevElements)=>[
+        ...prevElements,
+        history[history.length-1],
+    ]);
+    setHistory((prevHistory)=>prevHistory.slice(0,prevHistory.length-1));}
     }
   return (
     <div className="row">
@@ -43,8 +65,10 @@ const ctxRef = useRef(null);
                 </div>
             </div>
             <div className="col-md-3 d-flex gap-2">
-                <button className='btn btn-primary mt-1'>Undo</button>
-                <button className='btn btn-outline-primary mt-1'>ReDo</button>
+                <button className='btn btn-primary mt-1' disabled={elements.length===0}
+                onClick={()=>undo()}>Undo</button>
+                <button className='btn btn-outline-primary mt-1'disabled={elements.length<1}
+                onClick={()=>redo()}>ReDo</button>
             </div>
             <div className="col-md-2">
                 <button className="btn btn-danger" onClick={handleClearCanvas}>
