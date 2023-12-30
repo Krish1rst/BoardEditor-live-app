@@ -10,6 +10,13 @@ const ctxRef = useRef(null);
     const [tool,setTool]=useState('pencil');
     const [color,setColor]=useState('black');
     const [elements,setElements]=useState([]);
+    const handleClearCanvas=()=>{
+        const canvas =canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        ctx.fillReact='white';
+        ctx.clearRect(0,0,canvasRef.current.width, canvasRef.current.height);
+        setElements([]);
+    }
   return (
     <div className="row">
         <h1 className="text-center py-4">White Board Sharing app<span className='text-primary'>[Users Online : 0]</span></h1>
@@ -40,13 +47,13 @@ const ctxRef = useRef(null);
                 <button className='btn btn-outline-primary mt-1'>ReDo</button>
             </div>
             <div className="col-md-2">
-                <button className="btn btn-danger">
+                <button className="btn btn-danger" onClick={handleClearCanvas}>
                     Clear Canvas
                 </button>
             </div>
         </div>
         <div className="col-md-10 mx-auto mt-1 canvas-box">
-            <WhiteBoard canvasRef={canvasRef} ctxRef={ctxRef}tool={tool} elements={elements} setElements={setElements}/>
+            <WhiteBoard canvasRef={canvasRef} ctxRef={ctxRef}tool={tool} elements={elements} setElements={setElements} color={color}/>
         </div>
     </div>
   )
