@@ -46,7 +46,7 @@ const ctxRef = useRef(null);
             </div>
         </div>
         <div className="col-md-10 mx-auto mt-1 canvas-box">
-            <WhiteBoard canvasRef={canvasRef} ctxRef={ctxRef} elements={elements} setElements={setElements}/>
+            <WhiteBoard canvasRef={canvasRef} ctxRef={ctxRef}tool={tool} elements={elements} setElements={setElements}/>
         </div>
     </div>
   )
