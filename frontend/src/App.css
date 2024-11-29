@@ -1,0 +1,12 @@
+.video-grid {
+    width: 250px;
+    background-color: black;
+    padding: 20px;
+}
+
+
+
+.video-grid video {
+    width: 100%;
+    object-fit: cover;
+}
