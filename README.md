@@ -1,5 +1,4 @@
-# react-socket.io-white-board-sharing-app-youtube-series
-this is the repo for updated code of react-socket.io-white-board-sharing-app-youtube-series
+#skectboard
 
 ![Project Logo](images/Screenshot.png)
 
